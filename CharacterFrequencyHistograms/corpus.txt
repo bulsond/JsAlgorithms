@@ -1,0 +1,91 @@
+/**
+Текстовые данные для файла charfreq.js
+*/
+
+JavaScript has been the most used programming language for so many years now, yet people find it hard to get a grasp on. Let’s discuss some of the most frequently asked questions in JavaScript:
+Question
+
+What is the output of the following code?
+
+var dwayne = {}, daniel = { firstName: 'Daniel'}, jason = {key: 'jason'};
+
+dwayne[daniel]=123;
+dwayne[jason]=456;
+
+console.log(dwayne[daniel]);
+
+Solution
+
+456
+
+The reason for this is as follows: When setting an object property, JavaScript will implicitly stringify the parameter value. In this case, since daniel and jason are both objects, they will both be converted to "[object Object]". As a result, dwayne[dani] anddwayne[jason] are both equivalent to dwayne["[object Object]"] and can be used interchangeably. Therefore, setting or referencing dwayne[jason] is precisely the same as setting or referencing dwayne[daniel].
+Question
+
+What will be the output of the following code?
+
+const func = (function(a){
+  delete a;
+  return a;
+})(5);
+
+console.log(func);
+
+Solution
+
+5
+
+The output would be 0. The delete operator is used to delete properties from an object. Here a is not an object but a local variable. delete operators don't affect local variables.
+Question
+
+What is the output of the following code snippet?
+
+console.log({a:1} == {a:1});
+console.log({a:1} === {a:1});
+
+Solution
+
+false
+false
+
+In JavaScript, Objects are compared based on references.
+
+In the above statement, we are comparing two different objects so their references will be different. Hence, we get the output as false for both of the statements.
+Question
+
+Which approach is better and why?
+
+const jamesBond = {
+    firstName: "Daniel",
+    lastName: "Craig",
+    getFullName: function () {
+        return `${this.firstName} ${this.lastName}`.trim();
+    }
+};jamesBond.getFullName();
+
+or
+
+class Person {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+}Person.prototype.getFullName = function () {
+    return `${this.firstName} ${this.lastName}`.trim();
+};const jamesBond = new Person("Daniel", "Craig");jamesBond.getFullName();
+
+Solution
+
+Second approach is better since in the first approach, a closure is maintained for each copy of the object containing getFullName method. While in the second approach, the method is registered in the prototype rather than in every object. Thus, it is a more memory efficient approach.
+Question
+
+What is the difference between Object and Map?
+Solution
+
+    Objects can have only strings and symbols as their keys while Map can have primitive, functions or even objects as their keys.
+    Keys in Map are ordered but not in objects.
+    Size of Map can be easily determined using size property while it’s relatively hard for objects.
+    A Map may perform better in scenarios involving frequent addition and removal of key pairs.
+
+Wrapping up
+
+JavaScript is not a very vast language IMPO but it has a lot of depth in all that it holds in itself. If we can construct a clear understanding of the topics that we regularly use, it becomes extremely easy for us to get a hold on them.
