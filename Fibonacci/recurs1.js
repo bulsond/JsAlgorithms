@@ -7,5 +7,7 @@ function fib(number) {
   return fib(number - 1) + fib(number - 2);
 }
 
+// T = O(2^n) Exponential Time Complexity
+
 const fibNum = fib(4);
 console.log(fibNum);
