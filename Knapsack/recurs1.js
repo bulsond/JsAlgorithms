@@ -1,12 +1,14 @@
-// Проблема "Рюкзака".
+// Проблема "0-1 Рюкзака". (0-1) означает объект может быть выбран один или 0 раз
 // Имеется коллекция объектов со значениями Веса и Цены.
 // Имеется рюкзак в ограничением вместимости по Весу.
 // Задача: найти комбинацию таких объектов при которой будет
 // достигнута максимальная стоимость и не привышено ограничение по доступному суммарному весу.
 // Объекты не могут повторяться.
 
-// Рекурсивный способ решения
-function knapsackFn(items, maxCapacity, itemIndex) {
+// Dynamic algorithm. Рекурсивный способ решения
+// Evaluate all possible solutions and find
+// overall best solution via comparison
+function knapsack(items, maxCapacity, itemIndex) {
   //пустой результат
   let resultSack = { items: [], value: 0, weight: 0 };
 
@@ -18,15 +20,15 @@ function knapsackFn(items, maxCapacity, itemIndex) {
 
   if (maxCapacity < items[itemIndex].weight) {
     //вызываем снова с уменьшением индекса
-    return knapsackFn(items, maxCapacity, itemIndex - 1);
+    return knapsack(items, maxCapacity, itemIndex - 1);
   }
 
   //>>> ветка НЕТ
-  const sackWithoutItem = knapsackFn(items, maxCapacity, itemIndex - 1);
+  const sackWithoutItem = knapsack(items, maxCapacity, itemIndex - 1);
   // <<<
 
   //>>> ветка ДА
-  const sackWithItem = knapsackFn(
+  const sackWithItem = knapsack(
     items,
     maxCapacity - items[itemIndex].weight,
     itemIndex - 1
@@ -61,5 +63,5 @@ const items = [
 ];
 
 // sack = ['a', 'c']; решение
-const sack = knapsackFn(items, maxCap, items.length - 1);
+const sack = knapsack(items, maxCap, items.length - 1);
 console.log(sack);
