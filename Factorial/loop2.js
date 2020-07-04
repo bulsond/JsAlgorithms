@@ -9,5 +9,7 @@ function factorial(number) {
   return result;
 }
 
+// T = O(n)
+
 const result = factorial(5);
 console.log(result);
