@@ -13,7 +13,7 @@
 
 // предполагается, что передаваемые тексты
 //  состоят из строчных букв и
-//  не содержат знаки припенания
+//  не содержат знаки препина́ния
 function harmlessRansomNote(noteText, magazineText) {
   noteText = noteText.split(' ');
   magazineText = magazineText.split(' ');
