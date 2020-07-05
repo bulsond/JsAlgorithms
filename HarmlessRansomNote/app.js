@@ -32,7 +32,7 @@ function harmlessRansomNote(noteText, magazineText) {
   console.log(magazineObj);
 
   // проверяем по этому словарю записку
-  let result = false;
+  let result = true;
   // O(m-C)
   for (const word of noteText) {
     //если такое слово есть в словаре
@@ -41,8 +41,6 @@ function harmlessRansomNote(noteText, magazineText) {
       if (--magazineObj[word] < 0) {
         result = false;
         break;
-      } else {
-        result = true;
       }
     } else {
       result = false;
