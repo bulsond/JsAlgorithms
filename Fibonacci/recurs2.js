@@ -1,21 +1,25 @@
 // Вычисление числа Фибоначчи как суммы двух предыдущих чисел
 // последовательность получается такая: 1, 1, 2, 3, 5, 8
+// Memoized Fibonacci
 
 // Рекурсивно с запоминанием
-function fib(number, mem) {
-  let res = 0;
-  //проверяем вычисленного в памяти
-  if (mem[number]) {
+function fib(position, cache) {
+  let result = 0;
+  //проверяем может быть такое значение уже было вычислено
+  // base case
+  if (cache[position]) {
     //возвращаем готовый результат из памяти
-    return mem[number];
+    return cache[position];
   }
-  if (number < 2) {
-    res = 1;
+  if (position < 2) {
+    result = 1; // base case
   } else {
-    res = fib(number - 1, mem) + fib(number - 2, mem);
+    // recursive case
+    result = fib(position - 1, cache) + fib(position - 2, cache);
   }
-  mem[number] = res;
-  return res;
+  cache[position] = result; // запоминаем
+  // возвращаем результат
+  return result;
 }
 
 // T = O(n*C) Time Complexity

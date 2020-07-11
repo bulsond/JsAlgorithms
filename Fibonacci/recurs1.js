@@ -2,9 +2,11 @@
 // последовательность получается такая: 1, 1, 2, 3, 5, 8
 
 // Рекурсивно
-function fib(number) {
-  if (number < 2) return 1;
-  return fib(number - 1) + fib(number - 2);
+function fib(position) {
+  // base case
+  if (position < 2) return 1;
+  // recursive case
+  return fib(position - 1) + fib(position - 2);
 }
 
 // T = O(2^n) Exponential Time Complexity
